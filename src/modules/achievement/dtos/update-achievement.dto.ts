@@ -1,10 +1,4 @@
-import {
-  IsString,
-  IsEnum,
-  IsNumber,
-  IsOptional,
-  MaxLength,
-} from 'class-validator';
+import { IsString, IsNumber, IsOptional, MaxLength } from 'class-validator';
 
 import { ObjectiveType } from '../../../db/schema/achievement.schema';
 

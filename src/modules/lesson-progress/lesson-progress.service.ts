@@ -1,4 +1,5 @@
 import { eq, and, sql, isNull } from 'drizzle-orm';
+import { SQLiteTransaction } from 'drizzle-orm/sqlite-core';
 
 import { db } from '../../db';
 import {
@@ -7,12 +8,11 @@ import {
   LessonEntity,
 } from '../../db/schema';
 import { userAchievementService } from '../achievement/user-achievement.service';
+import { chapterService } from '../chapter/chapter.service';
 import { lessonService } from '../lesson/lesson.service';
 import { userService } from '../user/user.service';
 
 import { RecordProgressRequestDto, RecordProgressResponseDto } from './dtos';
-import { chapterService } from '../chapter/chapter.service';
-import { SQLiteTransaction } from 'drizzle-orm/sqlite-core';
 
 export class LessonProgressService {
   public async recordProgress(

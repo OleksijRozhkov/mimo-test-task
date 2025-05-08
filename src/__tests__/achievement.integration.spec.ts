@@ -15,6 +15,7 @@ import {
   LessonEntity,
   LessonProgressEntity,
   Lesson,
+  Course,
 } from '../db/schema';
 import { ObjectiveType } from '../db/schema/achievement.schema';
 import {
@@ -985,7 +986,9 @@ describe('Achievements API Integration Tests', () => {
           .returning();
 
         // Helper to create a course with 1 chapter and 1 lesson
-        async function createCourseWithLesson(courseName: string) {
+        async function createCourseWithLesson(
+          courseName: string,
+        ): Promise<{ course: Course; lesson: Lesson }> {
           const [course] = await db
             .insert(CourseEntity)
             .values({ name: courseName })
@@ -1052,7 +1055,9 @@ describe('Achievements API Integration Tests', () => {
           .returning();
 
         // Helper to create a course with 1 chapter and 1 lesson
-        async function createCourseWithLesson(courseName: string) {
+        async function createCourseWithLesson(
+          courseName: string,
+        ): Promise<{ course: Course; lesson: Lesson }> {
           const [course] = await db
             .insert(CourseEntity)
             .values({ name: courseName })

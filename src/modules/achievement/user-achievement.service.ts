@@ -126,7 +126,7 @@ export class UserAchievementService {
     transaction: SQLiteTransaction<any, any, any, any>,
     userId: number,
     achievements: AchievementWithUserAchievement[],
-  ) {
+  ): Promise<void> {
     // TODO: add specifying initial progress for new user achievements
     const missingUserAchievements = achievements.filter(
       ({ userAchievement }) => !userAchievement,
@@ -145,7 +145,7 @@ export class UserAchievementService {
     achievements: AchievementWithUserAchievement[],
     achievementTypesToIncrementProgress: ObjectiveType[],
     completedCourseId?: number,
-  ) {
+  ): AchievementWithUserAchievement[] {
     const achievementsToUpdate = achievements.filter(
       ({ achievement, userAchievement }) =>
         !userAchievement?.completed &&
@@ -168,7 +168,7 @@ export class UserAchievementService {
     transaction: SQLiteTransaction<any, any, any, any>,
     userId: number,
     achievementsToUpdate: AchievementWithUserAchievement[],
-  ) {
+  ): Promise<void> {
     if (achievementsToUpdate.length === 0) return;
     await transaction
       .update(UserAchievementEntity)
@@ -190,7 +190,7 @@ export class UserAchievementService {
     transaction: SQLiteTransaction<any, any, any, any>,
     userId: number,
     achievementsToUpdate: AchievementWithUserAchievement[],
-  ) {
+  ): Promise<void> {
     const achievementsToComplete = achievementsToUpdate.filter(
       ({ achievement, userAchievement }) =>
         (userAchievement?.progress || 0) + 1 >= achievement.target,

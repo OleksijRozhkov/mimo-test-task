@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { eq, and } from 'drizzle-orm';
 import request from 'supertest';
@@ -10,8 +9,6 @@ import {
   ChapterEntity,
   CourseEntity,
   UserEntity,
-  AchievementEntity,
-  ObjectiveType,
 } from '../db/schema';
 
 import { db, setupTestApp } from './setup';
